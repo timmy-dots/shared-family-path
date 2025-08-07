@@ -100,7 +100,7 @@ All colors MUST be HSL.
     --sidebar-ring: var(--brand-ykb);
   }
 }
-
+@layer base {
   * {
     @apply border-border;
   }
