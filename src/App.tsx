@@ -15,6 +15,7 @@ import Checkins from "./pages/Checkins";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Account from "./pages/Account";
+import ConflictResolution from "./pages/ConflictResolution";
 import { AuthProvider } from "./context/AuthContext";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
               <Route path="/voting" element={<Voting />} />
               <Route path="/vault" element={<VaultPage />} />
               <Route path="/checkins" element={<Checkins />} />
+              <Route path="/conflict" element={<ConflictResolution />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Route>

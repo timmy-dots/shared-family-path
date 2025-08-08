@@ -9,11 +9,11 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Brand Tokens */
-    --brand-navy: 226 62% 16%;
-    --brand-ykb: 220 100% 33%; /* Yves Klein Blue */
+    --brand-navy: 210 100% 12%;
+    --brand-ykb: 223 100% 33%; /* Yves Klein Blue */
 
     /* Base */
-    --background: 0 0% 100%;
+    --background: 220 18% 97%;
     --foreground: 228 62% 8%;
 
     /* Surfaces */

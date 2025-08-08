@@ -7,11 +7,13 @@ import { toast } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 
 const navItems = [
-  { to: "/onboarding", label: "Journey" },
-  { to: "/charter", label: "Charter" },
+  { to: "/", label: "Home" },
+  { to: "/onboarding", label: "Guided Journey" },
+  { to: "/charter", label: "Charter Builder" },
   { to: "/library", label: "Education" },
   { to: "/meetings", label: "Meetings" },
-  { to: "/voting", label: "Decisions" },
+  { to: "/voting", label: "Voting" },
+  { to: "/conflict", label: "Conflict Resolution" },
   { to: "/vault", label: "Vault" },
   { to: "/checkins", label: "Check-ins" },
 ];
@@ -37,7 +39,7 @@ export default function Layout() {
           </Link>
           <div className="hidden md:flex items-center gap-6">
             {navItems.map((n) => (
-              <NavLink key={n.to} to={n.to} className={activeCls}>
+              <NavLink key={n.to} to={n.to} end={n.to === "/"} className={activeCls}>
                 <span className="story-link pb-1">{n.label}</span>
               </NavLink>
             ))}
