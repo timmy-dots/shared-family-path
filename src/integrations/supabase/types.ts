@@ -14,7 +14,205 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      families: {
+        Row: {
+          created_at: string
+          id: string
+          name: string | null
+          owner_id: string
+          referral_code: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name?: string | null
+          owner_id: string
+          referral_code?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string | null
+          owner_id?: string
+          referral_code?: string | null
+        }
+        Relationships: []
+      }
+      family_members: {
+        Row: {
+          created_at: string
+          family_id: string
+          id: string
+          role: Database["public"]["Enums"]["family_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          family_id: string
+          id?: string
+          role?: Database["public"]["Enums"]["family_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          family_id?: string
+          id?: string
+          role?: Database["public"]["Enums"]["family_role"]
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "family_members_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "families"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      family_tree: {
+        Row: {
+          created_at: string
+          family_id: string | null
+          id: string
+          label: string
+          metadata: Json
+          parent_id: string | null
+          relation: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          family_id?: string | null
+          id?: string
+          label: string
+          metadata?: Json
+          parent_id?: string | null
+          relation?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          family_id?: string | null
+          id?: string
+          label?: string
+          metadata?: Json
+          parent_id?: string | null
+          relation?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "family_tree_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "family_tree_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "family_tree"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      financial_snapshots: {
+        Row: {
+          assets: Json
+          created_at: string
+          id: string
+          income: number
+          liabilities: Json
+          user_id: string
+        }
+        Insert: {
+          assets?: Json
+          created_at?: string
+          id?: string
+          income?: number
+          liabilities?: Json
+          user_id: string
+        }
+        Update: {
+          assets?: Json
+          created_at?: string
+          id?: string
+          income?: number
+          liabilities?: Json
+          user_id?: string
+        }
+        Relationships: []
+      }
+      governance_answers: {
+        Row: {
+          conflict_prefs: string | null
+          created_at: string
+          decision_style: string | null
+          id: string
+          user_id: string
+          values_answers: Json
+        }
+        Insert: {
+          conflict_prefs?: string | null
+          created_at?: string
+          decision_style?: string | null
+          id?: string
+          user_id: string
+          values_answers?: Json
+        }
+        Update: {
+          conflict_prefs?: string | null
+          created_at?: string
+          decision_style?: string | null
+          id?: string
+          user_id?: string
+          values_answers?: Json
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          date_of_birth: string | null
+          family_id: string | null
+          full_name: string | null
+          id: string
+          marital_status: string | null
+          relationship_role: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          date_of_birth?: string | null
+          family_id?: string | null
+          full_name?: string | null
+          id: string
+          marital_status?: string | null
+          relationship_role?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          date_of_birth?: string | null
+          family_id?: string | null
+          full_name?: string | null
+          id?: string
+          marital_status?: string | null
+          relationship_role?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "families"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +221,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      family_role: "head" | "member"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +348,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      family_role: ["head", "member"],
+    },
   },
 } as const
