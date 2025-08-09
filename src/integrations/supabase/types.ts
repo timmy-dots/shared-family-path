@@ -14,6 +14,223 @@ export type Database = {
   }
   public: {
     Tables: {
+      charter_comments: {
+        Row: {
+          author_id: string
+          charter_id: string
+          content: string
+          created_at: string
+          id: string
+          parent_id: string | null
+          resolved: boolean
+          section_id: string | null
+          selection: Json
+          updated_at: string
+        }
+        Insert: {
+          author_id: string
+          charter_id: string
+          content: string
+          created_at?: string
+          id?: string
+          parent_id?: string | null
+          resolved?: boolean
+          section_id?: string | null
+          selection?: Json
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string
+          charter_id?: string
+          content?: string
+          created_at?: string
+          id?: string
+          parent_id?: string | null
+          resolved?: boolean
+          section_id?: string | null
+          selection?: Json
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "charter_comments_charter_id_fkey"
+            columns: ["charter_id"]
+            isOneToOne: false
+            referencedRelation: "charters"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "charter_comments_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "charter_comments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "charter_comments_section_id_fkey"
+            columns: ["section_id"]
+            isOneToOne: false
+            referencedRelation: "charter_sections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      charter_notes: {
+        Row: {
+          author_id: string
+          charter_id: string
+          content: string
+          created_at: string
+          id: string
+          section_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          author_id: string
+          charter_id: string
+          content: string
+          created_at?: string
+          id?: string
+          section_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string
+          charter_id?: string
+          content?: string
+          created_at?: string
+          id?: string
+          section_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "charter_notes_charter_id_fkey"
+            columns: ["charter_id"]
+            isOneToOne: false
+            referencedRelation: "charters"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "charter_notes_section_id_fkey"
+            columns: ["section_id"]
+            isOneToOne: false
+            referencedRelation: "charter_sections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      charter_permissions: {
+        Row: {
+          created_at: string
+          family_id: string
+          id: string
+          permission: Database["public"]["Enums"]["charter_permission"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          family_id: string
+          id?: string
+          permission?: Database["public"]["Enums"]["charter_permission"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          family_id?: string
+          id?: string
+          permission?: Database["public"]["Enums"]["charter_permission"]
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "charter_permissions_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "families"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      charter_sections: {
+        Row: {
+          charter_id: string
+          content: string
+          created_at: string
+          id: string
+          position: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          charter_id: string
+          content?: string
+          created_at?: string
+          id?: string
+          position?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          charter_id?: string
+          content?: string
+          created_at?: string
+          id?: string
+          position?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "charter_sections_charter_id_fkey"
+            columns: ["charter_id"]
+            isOneToOne: false
+            referencedRelation: "charters"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      charters: {
+        Row: {
+          created_at: string
+          created_by: string
+          family_id: string
+          id: string
+          status: string
+          template_key: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          family_id: string
+          id?: string
+          status?: string
+          template_key?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          family_id?: string
+          id?: string
+          status?: string
+          template_key?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "charters_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "families"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       families: {
         Row: {
           created_at: string
@@ -218,9 +435,25 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_charter_permission: {
+        Args: {
+          _user_id: string
+          _family_id: string
+          _min: Database["public"]["Enums"]["charter_permission"]
+        }
+        Returns: boolean
+      }
+      is_family_member: {
+        Args: { _user_id: string; _family_id: string }
+        Returns: boolean
+      }
+      is_family_owner: {
+        Args: { _user_id: string; _family_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
+      charter_permission: "view" | "edit"
       family_role: "head" | "member"
     }
     CompositeTypes: {
@@ -349,6 +582,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      charter_permission: ["view", "edit"],
       family_role: ["head", "member"],
     },
   },
