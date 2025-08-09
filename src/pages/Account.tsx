@@ -6,7 +6,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
+import FamilyTreeCard from "@/components/family/FamilyTreeCard";
 
+function FamilyTreeSection() {
+  return <FamilyTreeCard />;
+}
 export default function Account() {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
@@ -63,6 +67,14 @@ export default function Account() {
             </Button>
           </CardContent>
         </Card>
+
+        {/* Family Tree Section */}
+        <div className="md:col-span-2">
+          {/* Lazy import to avoid SSR issues */}
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          {/* @ts-ignore */}
+          <FamilyTreeSection />
+        </div>
       </div>
     </section>
   );
