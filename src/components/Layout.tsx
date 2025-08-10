@@ -43,6 +43,11 @@ export default function Layout() {
                 <span className="story-link pb-1">{n.label}</span>
               </NavLink>
             ))}
+            {session && (
+              <NavLink to="/family-channel" className={activeCls}>
+                <span className="story-link pb-1">Family Channel</span>
+              </NavLink>
+            )}
           </div>
           <div className="flex items-center gap-2">
             {!session ? (
