@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { setPageSEO } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ExternalLink } from "lucide-react";
+import { Download } from "lucide-react";
 
 export default function ConflictResolution() {
   useEffect(() => {
@@ -12,9 +12,15 @@ export default function ConflictResolution() {
     );
   }, []);
 
-  // Function to open HTML guides in new tab
-  const openGuide = (guidePath: string) => {
-    window.open(guidePath, '_blank');
+  // Function to handle PDF downloads
+  const downloadPDF = (pdfPath: string, fileName: string) => {
+    const link = document.createElement('a');
+    link.href = pdfPath;
+    link.download = fileName;
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -36,54 +42,54 @@ export default function ConflictResolution() {
         <section className="grid gap-6 md:grid-cols-3">
           <Card 
             className="cursor-pointer hover:shadow-lg transition-shadow duration-200"
-            onClick={() => openGuide('/guides/de-escalation.html')}
+            onClick={() => downloadPDF('/pdfs/de-escalation.pdf', 'de-escalation-guide.pdf')}
           >
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
                 De-escalation
-                <ExternalLink className="h-4 w-4" />
+                <Download className="h-4 w-4" />
               </CardTitle>
               <CardDescription>Reset the room with a simple checklist.</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Click to open your complete de-escalation toolkit with step-by-step techniques and practical examples.
+                Click to download your complete de-escalation toolkit with step-by-step techniques and practical examples.
               </p>
             </CardContent>
           </Card>
 
           <Card 
             className="cursor-pointer hover:shadow-lg transition-shadow duration-200"
-            onClick={() => openGuide('/guides/mediation-steps.html')}
+            onClick={() => downloadPDF('/pdfs/mediation-steps.pdf', 'mediation-steps-guide.pdf')}
           >
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
                 Mediation Steps
-                <ExternalLink className="h-4 w-4" />
+                <Download className="h-4 w-4" />
               </CardTitle>
               <CardDescription>Step-by-step guide to structured dialogue.</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Click to open your comprehensive mediation guide with conversation frameworks and facilitation techniques.
+                Click to download your comprehensive mediation guide with conversation frameworks and facilitation techniques.
               </p>
             </CardContent>
           </Card>
 
           <Card 
             className="cursor-pointer hover:shadow-lg transition-shadow duration-200"
-            onClick={() => openGuide('/guides/repair-follow-up.html')}
+            onClick={() => downloadPDF('/pdfs/repair-follow-up.pdf', 'repair-follow-up-guide.pdf')}
           >
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
                 Repair & Follow-up
-                <ExternalLink className="h-4 w-4" />
+                <Download className="h-4 w-4" />
               </CardTitle>
               <CardDescription>Commitments, timelines, and check-ins.</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Click to open templates for repair agreements, follow-up schedules, and accountability systems.
+                Click to download templates for repair agreements, follow-up schedules, and accountability systems.
               </p>
             </CardContent>
           </Card>
