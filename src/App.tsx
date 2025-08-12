@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import Onboarding from "./pages/Onboarding";
-import Charter from "./pages/Charter";
+import Calculators from './pages/Calculators';
 import Library from "./pages/Library";
 import Meetings from "./pages/Meetings";
 import Voting from "./pages/Voting";
@@ -33,7 +33,7 @@ const App = () => (
               <Route path="/auth" element={<Auth />} />
               <Route path="/account" element={<Account />} />
               <Route path="/onboarding" element={<Onboarding />} />
-              <Route path="/charter" element={<Charter />} />
+              <Route path="/calculators" element={<Calculators />} />
               <Route path="/library" element={<Library />} />
               <Route path="/meetings" element={<Meetings />} />
               <Route path="/voting" element={<Voting />} />

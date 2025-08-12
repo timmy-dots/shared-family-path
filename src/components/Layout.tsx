@@ -9,7 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 const navItems = [
   { to: "/", label: "Home" },
   { to: "/onboarding", label: "Guided Journey" },
-  { to: "/charter", label: "Charter Builder" },
+  { to: "/calculators", label: "Calculators" },
   { to: "/library", label: "Education" },
   { to: "/meetings", label: "Meetings" },
   { to: "/voting", label: "Voting" },

@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { setPageSEO } from "@/lib/seo";
 import {
   Compass,
-  FileText,
+  Calculator,
   GraduationCap,
   CalendarClock,
   CheckSquare,
@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 
 const features = [
   { icon: Compass, title: "Guided Journey", desc: "Friendly, bite-sized onboarding to surface values, roles, and decisions.", to: "/onboarding" },
-  { icon: FileText, title: "Charter Builder", desc: "Smart templates that adapt to your family structure with plain language.", to: "/charter" },
+  { icon: Calculator, title: "Calculators", desc: "Financial planning tools to help your family make informed decisions together.", to: "/calculators" },
   { icon: GraduationCap, title: "Education", desc: "Short videos and interactive explainers for every family member.", to: "/library" },
   { icon: CalendarClock, title: "Meetings", desc: "Automated agendas, pre-reads, and summaries with calendar sync.", to: "/meetings" },
   { icon: CheckSquare, title: "Decisions", desc: "Secure polls, voting, and e‑signatures for formal adoption.", to: "/voting" },
