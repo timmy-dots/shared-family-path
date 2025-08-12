@@ -71,6 +71,9 @@ export default function Index() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <Button asChild size="lg" variant="hero">
+              <Link to="/discover-values">Discover Your Family Values</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
               <Link to="/onboarding">Start Governance Journey</Link>
             </Button>
             <Button asChild size="lg" variant="outline">

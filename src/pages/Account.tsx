@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
 import FamilyTreeCard from "@/components/family/FamilyTreeCard";
+import PersonalInfoCard from "@/components/account/PersonalInfoCard";
 
 function FamilyTreeSection() {
   return <FamilyTreeCard />;
@@ -67,6 +68,11 @@ export default function Account() {
             </Button>
           </CardContent>
         </Card>
+
+        {/* Personal Information */}
+        <div className="md:col-span-2">
+          <PersonalInfoCard />
+        </div>
 
         {/* Family Tree Section */}
         <div className="md:col-span-2">

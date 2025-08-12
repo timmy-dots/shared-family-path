@@ -16,6 +16,10 @@ import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Account from "./pages/Account";
 import ConflictResolution from "./pages/ConflictResolution";
+import FamilyChannel from "./pages/FamilyChannel";
+import AcceptInvite from "./pages/AcceptInvite";
+import DiscoverValues from "./pages/DiscoverValues";
+import ValuesComparison from "./pages/ValuesComparison";
 import { AuthProvider } from "./context/AuthContext";
 
 const queryClient = new QueryClient();
@@ -38,6 +42,10 @@ const App = () => (
               <Route path="/meetings" element={<Meetings />} />
               <Route path="/voting" element={<Voting />} />
               <Route path="/vault" element={<VaultPage />} />
+              <Route path="/family-channel" element={<FamilyChannel />} />
+              <Route path="/accept-invite" element={<AcceptInvite />} />
+              <Route path="/discover-values" element={<DiscoverValues />} />
+              <Route path="/values-comparison" element={<ValuesComparison />} />
               <Route path="/checkins" element={<Checkins />} />
               <Route path="/conflict" element={<ConflictResolution />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
