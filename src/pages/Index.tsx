@@ -10,7 +10,7 @@ import {
   CheckSquare,
   MessageCircle,
   FolderLock,
-  Clock
+  Calendar
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -22,7 +22,7 @@ const features = [
   { icon: CheckSquare, title: "Decisions", desc: "Secure polls, voting, and e‑signatures for formal adoption.", to: "/voting" },
   { icon: MessageCircle, title: "Resolve", desc: "Playbooks and role‑plays to de‑escalate and align.", to: "/library" },
   { icon: FolderLock, title: "Legacy Vault", desc: "Secure storage for charters, wills, notes, and stories.", to: "/vault" },
-  { icon: Clock, title: "Check‑ins", desc: "Governance health reminders and milestone alerts.", to: "/checkins" }
+  { icon: Calendar, title: "Appointments", desc: "Book consultations with family therapists and wealth managers.", to: "/appointments" }
 ];
 
 export default function Index() {

@@ -11,7 +11,7 @@ import Library from "./pages/Library";
 import Meetings from "./pages/Meetings";
 import Voting from "./pages/Voting";
 import VaultPage from "./pages/VaultPage";
-import Checkins from "./pages/Checkins";
+import Appointments from "./pages/Appointments";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Account from "./pages/Account";
@@ -46,7 +46,7 @@ const App = () => (
               <Route path="/accept-invite" element={<AcceptInvite />} />
               <Route path="/discover-values" element={<DiscoverValues />} />
               <Route path="/values-comparison" element={<ValuesComparison />} />
-              <Route path="/checkins" element={<Checkins />} />
+              <Route path="/Appointments" element={<Appointments />} />
               <Route path="/conflict" element={<ConflictResolution />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

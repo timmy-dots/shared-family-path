@@ -15,7 +15,7 @@ const navItems = [
   { to: "/voting", label: "Voting" },
   { to: "/conflict", label: "Conflict Resolution" },
   { to: "/vault", label: "Vault" },
-  { to: "/checkins", label: "Check-ins" },
+  { to: "/appointments", label: "Appointments" },
 ];
 
 export default function Layout() {
